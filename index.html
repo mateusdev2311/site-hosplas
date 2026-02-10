@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital São Rafael - Excelência em Saúde</title>
+    <title>Hospital da Plástica - Especialidades Médicas</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,32 +26,40 @@
     <header class="header">
         <div class="container header-container">
             <a href="#" class="logo">
-                <div class="logo-icon">
-                    <i class="fa-solid fa-hospital-user"></i>
-                </div>
-                <div class="logo-text">
-                    <span>HOSPITAL</span>
-                    <span>SÃO RAFAEL</span>
-                </div>
+                <img src="logo.png" alt="Hospital da Plástica" class="logo-img">
             </a>
 
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#inicio" class="active">Início</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#especialidades">Especialidades</a></li>
-                    <li><a href="#medicos">Médicos</a></li>
+                    <li><a href="#inicio" class="active" data-i18n="nav_home">Início</a></li>
+                    <li><a href="#sobre" data-i18n="nav_about">Sobre</a></li>
+                    <li><a href="#especialidades" data-i18n="nav_specialties">Especialidades</a></li>
+                    <li><a href="#medicos" data-i18n="nav_doctors">Médicos</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <div class="language-selector">
-                    <i class="fa-solid fa-globe"></i>
-                    <span>BR Português</span>
+                <div class="language-dropdown-container">
+                    <div class="language-selector">
+                        <i class="fa-solid fa-globe"></i>
+                        <span class="current-lang">BR Português</span>
+                        <i class="fa-solid fa-chevron-down ms-1"></i>
+                    </div>
+                    <ul class="language-menu">
+                        <li onclick="setLanguage('pt')">
+                            <span class="lang-flag">🇧🇷</span> Português
+                        </li>
+                        <li onclick="setLanguage('en')">
+                            <span class="lang-flag">🇺🇸</span> English
+                        </li>
+                        <li onclick="setLanguage('es')">
+                            <span class="lang-flag">🇪🇸</span> Español
+                        </li>
+                    </ul>
                 </div>
-                <a href="#contato" class="btn-primary">
+                <a href="https://wa.me/553832297550" class="btn-primary" target="_blank">
                     <i class="fa-solid fa-phone"></i>
-                    Entre em Contato
+                    <span data-i18n="nav_contact">Entre em Contato</span>
                 </a>
             </div>
 
@@ -65,8 +73,8 @@
     <section id="inicio" class="hero">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <span class="hero-subtitle">BEM VINDO AO</span>
-            <h1 class="hero-title">
+            <span class="hero-subtitle" data-i18n="hero_subtitle">BEM VINDO AO HOSPITAL DA PLÁSTICA</span>
+            <h1 class="hero-title" data-i18n="hero_title">
                 Excelência em saúde com o<br>
                 conforto de um hotel cinco<br>
                 estrelas
@@ -116,7 +124,7 @@
     </section>
 
     <!-- WhatsApp Floating Button -->
-    <a href="#" class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/553832297550" class="whatsapp-btn" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -124,92 +132,92 @@
     <section id="sobre" class="about-section">
         <div class="container about-container">
             <div class="about-image">
-                <img src="hospital_building.jpg" alt="Fachada do Hospital São Rafael">
+                <img src="predio-empresa.jpeg" alt="Fachada do Hospital São Rafael">
             </div>
             <div class="about-text">
                 <span class="section-subtitle">SOBRE O HOSPITAL</span>
-                <h2 class="section-title">Conforto E Experiência de<br>Hotel 5 Estrelas.</h2>
+                <h2 class="section-title">Hospital da Plástica <span class="highlight">Especialidades Médicas</span>
+                </h2>
                 <div class="about-description">
-                    <p>Fundado em 2022, o Hospital São Rafael se destaca como um verdadeiro marco na prestação de
-                        cuidados de saúde especializados. Com uma equipe de profissionais altamente qualificados,
-                        tecnologia de ponta e uma infraestrutura moderna, oferecemos um atendimento humanizado e
-                        eficiente.</p>
-                    <p>Nossa abordagem centrada na jornada do paciente busca não apenas a excelência em cuidados
-                        cirúrgicos, mas também a promoção do bem-estar e da recuperação integral, garantindo segurança,
-                        conforto e os melhores resultados para cada paciente que confia em nossos serviços.</p>
+                    <p>O Hospital da Plástica Especialidades Médicas presta serviços de cirurgia plástica com atenção
+                        especial para a cirurgia estética. Com uma estrutura moderna de tecnologia e uma equipe de
+                        profissionais experientes realiza cirurgias de pequeno, médio e grande portes nas diversas
+                        especialidades médicas.</p>
+                    <p>Conta com salas cirúrgicas, sala pré-anestésica, sala de recuperação, centro de esterilização de
+                        materiais (CME), sala de espera para familiares, sala de estar para médicos e farmácia, para a
+                        qualidade e o sucesso dos procedimentos cirúrgicos.</p>
+                    <p><strong>O atendimento é personalizado com a segurança que você precisa e o conforto que você
+                            merece.</strong></p>
+                </div>
+
+                <!-- Stats Row Moved -->
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number">2022</span>
+                        <span class="stat-label">Fundação</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">65+</span>
+                        <span class="stat-label">Leitos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">22</span>
+                        <span class="stat-label">Salas Cirúrgicas</span>
+                    </div>
+                </div>
+
+                <!-- Values Content Moved -->
+                <div class="values-content">
+                    <h2 class="values-title">Nossos Valores</h2>
+                    <ul class="values-list">
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div>
+                                <strong>Propósito "Porque existimos?"</strong>
+                                <p>Oferecer aos clientes a experiência e o conforto de um hotel 5 estrelas e a segurança
+                                    de
+                                    um hospital de grande porte.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div>
+                                <strong>Missão "O que oferecemos?"</strong>
+                                <p>Garantir uma experiência única aos nossos clientes proporcionando o encantamento
+                                    através
+                                    de uma jornada com conforto e segurança assistencial.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div>
+                                <strong>Visão "Onde queremos chegar?"</strong>
+                                <p>Ser o primeiro hospital de Minas Gerais a oferecer uma jornada completa ao paciente
+                                    cirúrgico eletivo.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            <div>
+                                <strong>Valores "Como agimos?"</strong>
+                                <p>Competência Técnica, Disrupção, Ética, Excelência, Inovação Científica, Integridade,
+                                    Responsabilidade Social.</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Values & Stats Section -->
-    <section class="values-section">
-        <div class="container values-container">
-            <!-- Stats Row -->
-            <div class="stats-row">
-                <div class="stat-item">
-                    <span class="stat-number">2022</span>
-                    <span class="stat-label">Fundação</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">65+</span>
-                    <span class="stat-label">Leitos</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">22</span>
-                    <span class="stat-label">Salas Cirúrgicas</span>
-                </div>
-            </div>
 
-            <div class="divider"></div>
-
-            <!-- Values Content -->
-            <div class="values-content">
-                <h2 class="values-title">Nossos Valores</h2>
-                <ul class="values-list">
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        <div>
-                            <strong>Propósito "Porque existimos?"</strong>
-                            <p>Oferecer aos clientes a experiência e o conforto de um hotel 5 estrelas e a segurança de
-                                um hospital de grande porte.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        <div>
-                            <strong>Missão "O que oferecemos?"</strong>
-                            <p>Garantir uma experiência única aos nossos clientes proporcionando o encantamento através
-                                de uma jornada com conforto e segurança assistencial.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        <div>
-                            <strong>Visão "Onde queremos chegar?"</strong>
-                            <p>Ser o primeiro hospital de Minas Gerais a oferecer uma jornada completa ao paciente
-                                cirúrgico eletivo.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-check"></i>
-                        <div>
-                            <strong>Valores "Como agimos?"</strong>
-                            <p>Competência Técnica, Disrupção, Ética, Excelência, Inovação Científica, Integridade,
-                                Responsabilidade Social.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
     <!-- Specialties Section -->
     <section id="especialidades" class="specialties-section">
         <div class="container">
             <div class="section-header-center">
                 <span class="section-subtitle">ESPECIALIDADES</span>
-                <h2 class="section-title text-white">Especialidades</h2>
+                <h2 class="section-title text-white" data-i18n="specialties_title">Especialidades</h2>
             </div>
 
             <div class="specialties-grid">
@@ -322,7 +330,7 @@
     <section class="infrastructure-section">
         <div class="container infra-container">
             <div class="infra-text">
-                <span class="section-subtitle">HOSPITAL SÃO RAFAEL</span>
+                <span class="section-subtitle">HOSPITAL DA PLÁSTICA</span>
                 <h2 class="section-title">Infraestrutura Completa</h2>
                 <p class="infra-desc">Cada detalhe de nossas instalações foi pensado para garantir a sua segurança e
                     conforto.</p>
@@ -349,7 +357,8 @@
                 </div>
 
                 <a href="#" class="btn-primary btn-gallery">
-                    <i class="fa-regular fa-images"></i> Acesse nossa Galeria Completa
+                    <i class="fa-regular fa-images"></i> <span data-i18n="btn_gallery">Acesse nossa Galeria
+                        Completa</span>
                 </a>
             </div>
 
@@ -367,9 +376,10 @@
     <section id="medicos" class="doctors-section">
         <div class="container">
             <div class="section-header-center">
-                <h2 class="section-title text-white">Médicos</h2>
-                <h3 class="form-subtitle">Agende uma visita ao Hospital São Rafael</h3>
-                <p class="form-desc">O Hospital São Rafael está de portas abertas para médicos que desejam conhecer
+                <h2 class="section-title text-white" data-i18n="doctors_title">Médicos</h2>
+                <h3 class="form-subtitle" data-i18n="doctors_subtitle">Agende uma visita ao Hospital da Plástica</h3>
+                <p class="form-desc" data-i18n="doctors_desc">O Hospital da Plástica está de portas abertas para médicos
+                    que desejam conhecer
                     nossos centros cirúrgicos, unidades de internação, consultórios e demais áreas de apoio.</p>
             </div>
 
@@ -402,7 +412,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-submit">Agendar Visita Técnica</button>
+                    <button type="submit" class="btn-submit" data-i18n="btn_schedule">Agendar Visita Técnica</button>
                 </form>
             </div>
         </div>
@@ -444,21 +454,22 @@
     <section class="location-section">
         <div class="container">
             <div class="section-header-center">
-                <h2 class="section-title text-white">Nossa Localização</h2>
-                <p class="location-subtitle">Venha nos visitar e conheça nossa estrutura</p>
+                <h2 class="section-title text-white" data-i18n="location_title">Nossa Localização</h2>
+                <p class="location-subtitle" data-i18n="location_subtitle">Venha nos visitar e conheça nossa estrutura
+                </p>
             </div>
 
             <div class="location-content">
                 <div class="map-container">
                     <!-- Google Maps Iframe Placeholder -->
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.852445781363!2d-43.95773222533379!3d-19.93060298145892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa69771146607d3%3A0xc0781774313054f!2sAv.%20Raja%20Gab%C3%A1glia%2C%201380%20-%20Cidade%20Jardim%2C%20Belo%20Horizonte%20-%20MG%2C%2030441-194!5e0!3m2!1spt-BR!2sbr!4v1707560000000!5m2!1spt-BR!2sbr"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.882322960654!2d-43.86175992497647!3d-16.72252198405526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab549746e00171%3A0x629538356f947236!2sAv.%20Afonso%20Pena%2C%20543%20-%20Centro%2C%20Montes%20Claros%20-%20MG%2C%2039400-098!5e0!3m2!1spt-BR!2sbr!4v1707560000000!5m2!1spt-BR!2sbr"
                         width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <div class="location-details">
-                    <h3 class="location-details-title">Hospital São Rafael</h3>
+                    <h3 class="location-details-title">Hospital da Plástica</h3>
 
                     <div class="contact-item">
                         <div class="icon-box">
@@ -466,10 +477,9 @@
                         </div>
                         <div class="contact-info">
                             <h4>Endereço</h4>
-                            <p>Av. Raja Gabáglia, 1380</p>
-                            <p>Cidade Jardim</p>
-                            <p>Belo Horizonte - MG</p>
-                            <p>CEP: 30441-194</p>
+                            <p>Avenida Afonso Pena, 543</p>
+                            <p>Centro, Montes Claros - MG</p>
+                            <p>CEP: 39400-098</p>
                         </div>
                     </div>
 
@@ -494,7 +504,7 @@
                     </div>
 
                     <a href="https://maps.google.com" target="_blank" class="btn-primary btn-location">
-                        <i class="fa-solid fa-location-arrow"></i> Como Chegar
+                        <i class="fa-solid fa-location-arrow"></i> <span data-i18n="btn_how_to_get">Como Chegar</span>
                     </a>
                 </div>
             </div>
@@ -507,12 +517,13 @@
             <!-- Brand Column -->
             <div class="footer-brand">
                 <div class="footer-logo-text">
-                    <span>HOSPITAL</span>
-                    <span>SÃO</span>
-                    <span>RAFAEL</span>
+                    <span>HOSPITAL DA</span>
+                    <span>PLÁSTICA</span>
                 </div>
-                <p class="footer-desc">O mais moderno hospital cirúrgico eletivo de Minas Gerais.</p>
-                <p class="footer-slogan">Segurança • Conforto • Experiência</p>
+                <p class="footer-desc" data-i18n="footer_desc">O atendimento é personalizado com a segurança que você
+                    precisa e o conforto que
+                    você merece.</p>
+                <p class="footer-slogan" data-i18n="footer_slogan">Segurança • Conforto • Experiência</p>
 
                 <div class="social-links">
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -527,7 +538,7 @@
                 <h4>Endereço</h4>
                 <div class="footer-info">
                     <i class="fa-solid fa-location-dot"></i>
-                    <p>Av Raja Gabaglia 1380<br>Belo Horizonte, 30441194</p>
+                    <p>Av. Afonso Pena, 543<br>Centro, Montes Claros - MG<br>CEP 39400-098</p>
                 </div>
             </div>
 
@@ -556,11 +567,12 @@
         </div>
 
         <div class="footer-copyright">
-            <p>Todos os Direitos Reservados &copy; 2025 Hospital São Rafael</p>
+            <p>Todos os Direitos Reservados &copy; 2026 Hospital da Plástica</p>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="script.js"></script>
     <script>
         // Simple Mobile Menu Toggle
         const mobileToggle = document.querySelector('.mobile-toggle');
