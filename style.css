@@ -60,7 +60,9 @@ ul {
 
 /* Header */
 .header {
-    background-color: var(--color-header-bg);
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     padding: 0.5rem 0;
     position: fixed;
     width: 100%;
