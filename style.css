@@ -1,8 +1,7 @@
-/* Global Variables */
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 120px;
-}
+/* 
+ * All styles have been migrated to Tailwind CSS in index.html.
+ * This file is kept empty or for future custom animations that might be complex in Tailwind.
+ */
 
 :root {
     --color-bg-dark: #0a0a0a;

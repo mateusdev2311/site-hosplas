@@ -18,189 +18,298 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#0a0a0a',
+                        'bg-card': '#1f1f1f',
+                        'text-gray': '#b3b3b3',
+                        'accent-gold': '#c5a059',
+                        'accent-blue': '#00b8d4',
+                        'header-bg': '#000000',
+                        'button-bg': '#2a2a2a',
+                        'whatsapp-green': '#25d366',
+                    },
+                    fontFamily: {
+                        primary: ['Montserrat', 'sans-serif'],
+                        secondary: ['Inter', 'sans-serif'],
+                    },
+                    container: {
+                        center: true,
+                        padding: '1rem',
+                        screens: {
+                            xl: '1200px',
+                        },
+                    },
+                }
+            }
+        }
+    </script>
 </head>
 
 <body>
 
     <!-- Header -->
-    <header class="header">
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <img src="logo.png" alt="Hospital da Plástica" class="logo-img">
+    <!-- Header -->
+    <header
+        class="fixed w-full top-0 z-50 py-2 bg-black/85 backdrop-blur-sm border-b border-white/10 transition-all duration-300">
+        <div class="container flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="logo.png" alt="Hospital da Plástica" class="h-[85px] w-auto object-contain">
             </a>
 
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#inicio" class="active" data-i18n="nav_home">Início</a></li>
-                    <li><a href="#sobre" data-i18n="nav_about">Sobre</a></li>
-                    <li><a href="#especialidades" data-i18n="nav_specialties">Especialidades</a></li>
-                    <li><a href="#medicos" data-i18n="nav_doctors">Médicos</a></li>
+            <nav class="hidden lg:block">
+                <ul class="flex gap-8">
+                    <li><a href="#inicio"
+                            class="font-medium text-[0.95rem] text-white hover:text-text-gray transition-colors active"
+                            data-i18n="nav_home">Início</a></li>
+                    <li><a href="#sobre"
+                            class="font-medium text-[0.95rem] text-white hover:text-text-gray transition-colors"
+                            data-i18n="nav_about">Sobre</a></li>
+                    <li><a href="#especialidades"
+                            class="font-medium text-[0.95rem] text-white hover:text-text-gray transition-colors"
+                            data-i18n="nav_specialties">Especialidades</a></li>
+                    <li><a href="#medicos"
+                            class="font-medium text-[0.95rem] text-white hover:text-text-gray transition-colors"
+                            data-i18n="nav_doctors">Médicos</a></li>
                 </ul>
             </nav>
 
-            <div class="header-actions">
-                <div class="language-dropdown-container">
-                    <div class="language-selector">
+            <div class="hidden lg:flex items-center gap-6">
+                <div class="language-dropdown-container relative group">
+                    <div class="flex items-center gap-2 text-sm text-white cursor-pointer hover:text-gray-300">
                         <i class="fa-solid fa-globe"></i>
                         <span class="current-lang">BR Português</span>
-                        <i class="fa-solid fa-chevron-down ms-1"></i>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
                     </div>
-                    <ul class="language-menu">
-                        <li onclick="setLanguage('pt')">
-                            <span class="lang-flag">🇧🇷</span> Português
+                    <!-- Tailwind Dropdown -->
+                    <ul
+                        class="absolute top-full right-0 mt-2 w-40 bg-button-bg border border-white/10 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 overflow-hidden">
+                        <li onclick="setLanguage('pt')"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 cursor-pointer text-sm transition-colors text-white border-b border-white/5">
+                            <span class="text-lg">🇧🇷</span> Português
                         </li>
-                        <li onclick="setLanguage('en')">
-                            <span class="lang-flag">🇺🇸</span> English
+                        <li onclick="setLanguage('en')"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 cursor-pointer text-sm transition-colors text-white border-b border-white/5">
+                            <span class="text-lg">🇺🇸</span> English
                         </li>
-                        <li onclick="setLanguage('es')">
-                            <span class="lang-flag">🇪🇸</span> Español
+                        <li onclick="setLanguage('es')"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-white/10 cursor-pointer text-sm transition-colors text-white">
+                            <span class="text-lg">🇪🇸</span> Español
                         </li>
                     </ul>
                 </div>
-                <a href="https://wa.me/553832297550" class="btn-primary" target="_blank">
+                <a href="https://wa.me/553832297550" target="_blank"
+                    class="bg-button-bg text-white py-3 px-6 rounded-full font-semibold flex items-center gap-2 border border-white/20 hover:bg-white/10 transition-colors">
                     <i class="fa-solid fa-phone"></i>
                     <span data-i18n="nav_contact">Entre em Contato</span>
                 </a>
             </div>
 
-            <div class="mobile-toggle">
+            <!-- Mobile Toggle -->
+            <div class="lg:hidden text-2xl cursor-pointer text-white mobile-toggle">
                 <i class="fa-solid fa-bars"></i>
             </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div
+            class="nav-menu lg:hidden fixed top-[101px] left-0 w-full bg-black/95 backdrop-blur-md hidden border-b border-white/10">
+            <ul class="flex flex-col p-6 gap-4">
+                <li><a href="#inicio" class="block py-2 text-white hover:text-accent-blue"
+                        data-i18n="nav_home">Início</a></li>
+                <li><a href="#sobre" class="block py-2 text-white hover:text-accent-blue"
+                        data-i18n="nav_about">Sobre</a></li>
+                <li><a href="#especialidades" class="block py-2 text-white hover:text-accent-blue"
+                        data-i18n="nav_specialties">Especialidades</a></li>
+                <li><a href="#medicos" class="block py-2 text-white hover:text-accent-blue"
+                        data-i18n="nav_doctors">Médicos</a></li>
+                <li class="pt-4 border-t border-white/10 flex flex-col gap-4">
+                    <div class="flex gap-4">
+                        <span onclick="setLanguage('pt')" class="cursor-pointer text-2xl">🇧🇷</span>
+                        <span onclick="setLanguage('en')" class="cursor-pointer text-2xl">🇺🇸</span>
+                        <span onclick="setLanguage('es')" class="cursor-pointer text-2xl">🇪🇸</span>
+                    </div>
+                    <a href="https://wa.me/553832297550" target="_blank"
+                        class="bg-button-bg text-white py-3 px-6 rounded-full font-semibold flex items-center justify-center gap-2 border border-white/20 w-full">
+                        <i class="fa-solid fa-phone"></i>
+                        <span data-i18n="nav_contact">Entre em Contato</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <span class="hero-subtitle" data-i18n="hero_subtitle">BEM VINDO AO HOSPITAL DA PLÁSTICA</span>
-            <h1 class="hero-title" data-i18n="hero_title">
+    <!-- Hero Section -->
+    <section id="inicio" class="relative h-screen flex items-center bg-cover bg-center"
+        style="background-image: url('hero_background.jpg');">
+        <div class="absolute inset-0 bg-[#645a14]/70 z-10"></div>
+        <div class="container relative z-20 pt-20 px-4">
+            <span class="block font-primary text-white/80 text-base tracking-[2px] mb-4 uppercase"
+                data-i18n="hero_subtitle">BEM VINDO AO HOSPITAL DA PLÁSTICA</span>
+            <h1 class="font-primary text-4xl md:text-6xl font-bold leading-tight text-white mb-8"
+                data-i18n="hero_title">
                 Excelência em saúde com o<br>
                 conforto de um hotel cinco<br>
                 estrelas
             </h1>
-            <div class="scroll-indicator">
-                <i class="fa-solid fa-chevron-down"></i>
-            </div>
+
         </div>
     </section>
 
     <!-- Services Grid -->
-    <section class="services-grid">
+    <!-- Services Grid -->
+    <section class="py-16 bg-[#111]">
         <div class="container">
-            <div class="grid-container">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Card 1 -->
-                <div class="service-card">
-                    <h3>Hospital</h3>
-                    <p>Segurança e tecnologia de um hospital de ponta.</p>
+                <div
+                    class="bg-button-bg p-10 rounded-lg transition-transform hover:-translate-y-1 hover:bg-[#333] min-h-[180px] flex flex-col justify-center">
+                    <h3 class="font-primary text-xl font-bold mb-4 text-white" data-i18n="service_surgery">Cirurgias
+                        Plásticas</h3>
+                    <p class="text-[0.95rem] text-text-gray leading-relaxed" data-i18n="service_surgery_desc">
+                        Procedimentos estéticos e reparadores com tecnologia de ponta</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="service-card">
-                    <h3>Unidade de Transição</h3>
-                    <p>Conforto e experiência para a sua recuperação.</p>
+                <div
+                    class="bg-button-bg p-10 rounded-lg transition-transform hover:-translate-y-1 hover:bg-[#333] min-h-[180px] flex flex-col justify-center">
+                    <h3 class="font-primary text-xl font-bold mb-4 text-white">Unidade de Transição</h3>
+                    <p class="text-[0.95rem] text-text-gray leading-relaxed">Conforto e experiência para a sua
+                        recuperação.</p>
                 </div>
                 <!-- Card 3 -->
-                <div class="service-card">
-                    <h3>Terapia Hiperbárica</h3>
-                    <p>Terapia avançada para uma cura acelerada.</p>
+                <div
+                    class="bg-button-bg p-10 rounded-lg transition-transform hover:-translate-y-1 hover:bg-[#333] min-h-[180px] flex flex-col justify-center">
+                    <h3 class="font-primary text-xl font-bold mb-4 text-white">Terapia Hiperbárica</h3>
+                    <p class="text-[0.95rem] text-text-gray leading-relaxed">Terapia avançada para uma cura acelerada.
+                    </p>
                 </div>
                 <!-- Card 4 -->
-                <div class="service-card">
-                    <h3>Centro de Especialidades</h3>
-                    <p>Especialistas dedicados à sua saúde.</p>
+                <div
+                    class="bg-button-bg p-10 rounded-lg transition-transform hover:-translate-y-1 hover:bg-[#333] min-h-[180px] flex flex-col justify-center">
+                    <h3 class="font-primary text-xl font-bold mb-4 text-white">Centro de Especialidades</h3>
+                    <p class="text-[0.95rem] text-text-gray leading-relaxed">Especialistas dedicados à sua saúde.</p>
                 </div>
                 <!-- Card 5 -->
-                <div class="service-card">
-                    <h3>Serviço de Diagnóstico</h3>
-                    <p>Diagnósticos precisos com tecnologia de ponta.</p>
+                <div
+                    class="bg-button-bg p-10 rounded-lg transition-transform hover:-translate-y-1 hover:bg-[#333] min-h-[180px] flex flex-col justify-center">
+                    <h3 class="font-primary text-xl font-bold mb-4 text-white">Serviço de Diagnóstico</h3>
+                    <p class="text-[0.95rem] text-text-gray leading-relaxed">Diagnósticos precisos com tecnologia de
+                        ponta.</p>
                 </div>
                 <!-- Card 6 -->
-                <div class="service-card">
-                    <h3>Praça de Alimentação</h3>
-                    <p>Sabores diversos em um ambiente acolhedor.</p>
+                <div
+                    class="bg-button-bg p-10 rounded-lg transition-transform hover:-translate-y-1 hover:bg-[#333] min-h-[180px] flex flex-col justify-center">
+                    <h3 class="font-primary text-xl font-bold mb-4 text-white">Cozinha Própria</h3>
+                    <p class="text-[0.95rem] text-text-gray leading-relaxed">Sabores diversos em um ambiente acolhedor.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/553832297550" class="whatsapp-btn" target="_blank">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/553832297550"
+        class="fixed bottom-8 right-8 bg-whatsapp-green text-white w-[60px] h-[60px] rounded-full flex justify-center items-center text-3xl shadow-lg z-50 hover:scale-110 transition-transform"
+        target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <!-- About Section -->
-    <section id="sobre" class="about-section">
-        <div class="container about-container">
-            <div class="about-image">
-                <img src="predio-empresa.jpeg" alt="Fachada do Hospital São Rafael">
+    <!-- About Section -->
+    <section id="sobre" class="py-24 bg-white text-[#333]">
+        <div class="container flex flex-col lg:flex-row gap-16 items-start">
+            <div class="flex-1 rounded-[20px] overflow-hidden shadow-2xl w-full h-[400px] lg:h-auto">
+                <img src="predio-empresa.jpeg" alt="Fachada do Hospital São Rafael"
+                    class="w-full h-full object-cover block">
             </div>
-            <div class="about-text">
-                <span class="section-subtitle">SOBRE O HOSPITAL</span>
-                <h2 class="section-title">Hospital da Plástica <span class="highlight">Especialidades Médicas</span>
+            <div class="flex-1">
+                <span class="block text-accent-blue font-semibold text-sm tracking-widest mb-4 uppercase">SOBRE O
+                    HOSPITAL</span>
+                <h2 class="font-primary font-bold leading-tight mb-8 text-[#111] text-[1.8rem]">Hospital da Plástica
+                    <span class="text-accent-blue">Especialidades Médicas</span>
                 </h2>
-                <div class="about-description">
-                    <p>O Hospital da Plástica Especialidades Médicas presta serviços de cirurgia plástica com atenção
+                <div class="mb-6 text-[#555] text-[0.875rem] leading-relaxed">
+                    <p class="mb-6">O Hospital da Plástica Especialidades Médicas presta serviços de cirurgia plástica
+                        com atenção
                         especial para a cirurgia estética. Com uma estrutura moderna de tecnologia e uma equipe de
                         profissionais experientes realiza cirurgias de pequeno, médio e grande portes nas diversas
                         especialidades médicas.</p>
-                    <p>Conta com salas cirúrgicas, sala pré-anestésica, sala de recuperação, centro de esterilização de
+                    <p class="mb-6">Conta com salas cirúrgicas, sala pré-anestésica, sala de recuperação, centro de
+                        esterilização de
                         materiais (CME), sala de espera para familiares, sala de estar para médicos e farmácia, para a
                         qualidade e o sucesso dos procedimentos cirúrgicos.</p>
-                    <p><strong>O atendimento é personalizado com a segurança que você precisa e o conforto que você
+                    <p class="mb-6"><strong>O atendimento é personalizado com a segurança que você precisa e o conforto
+                            que você
                             merece.</strong></p>
                 </div>
 
                 <!-- Stats Row Moved -->
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <span class="stat-number">2022</span>
-                        <span class="stat-label">Fundação</span>
+                <div
+                    class="flex flex-col sm:flex-row justify-between text-center py-8 mb-8 border-b border-gray-100 gap-8 sm:gap-0">
+                    <div class="flex flex-col gap-2">
+                        <span class="font-primary text-[1.875rem] font-bold text-accent-blue">2022</span>
+                        <span class="text-base text-[#666] font-medium">Fundação</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">65+</span>
-                        <span class="stat-label">Leitos</span>
+                    <div class="flex flex-col gap-2">
+                        <span class="font-primary text-[1.875rem] font-bold text-accent-blue">65+</span>
+                        <span class="text-base text-[#666] font-medium">Leitos</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">22</span>
-                        <span class="stat-label">Salas Cirúrgicas</span>
+                    <div class="flex flex-col gap-2">
+                        <span class="font-primary text-[1.875rem] font-bold text-accent-blue">22</span>
+                        <span class="text-base text-[#666] font-medium">Salas Cirúrgicas</span>
                     </div>
                 </div>
 
                 <!-- Values Content Moved -->
-                <div class="values-content">
-                    <h2 class="values-title">Nossos Valores</h2>
-                    <ul class="values-list">
-                        <li>
-                            <i class="fa-solid fa-check"></i>
+                <div class="">
+                    <h2 class="font-primary text-2xl font-bold mb-8 text-[#111]">Nossos Valores</h2>
+                    <ul class="flex flex-col gap-8">
+                        <li class="flex gap-6 items-start">
+                            <i class="fa-solid fa-check text-accent-blue text-xl mt-1"></i>
                             <div>
-                                <strong>Propósito "Porque existimos?"</strong>
-                                <p>Oferecer aos clientes a experiência e o conforto de um hotel 5 estrelas e a segurança
+                                <strong class="block text-lg mb-2 text-[#222]">Propósito "Porque existimos?"</strong>
+                                <p class="text-[#666] text-[0.875rem] leading-relaxed">Oferecer aos clientes a
+                                    experiência e o conforto de um hotel 5 estrelas e a segurança
                                     de
                                     um hospital de grande porte.</p>
                             </div>
                         </li>
-                        <li>
-                            <i class="fa-solid fa-check"></i>
+                        <li class="flex gap-6 items-start">
+                            <i class="fa-solid fa-check text-accent-blue text-xl mt-1"></i>
                             <div>
-                                <strong>Missão "O que oferecemos?"</strong>
-                                <p>Garantir uma experiência única aos nossos clientes proporcionando o encantamento
+                                <strong class="block text-lg mb-2 text-[#222]">Missão "O que oferecemos?"</strong>
+                                <p class="text-[#666] text-[0.875rem] leading-relaxed">Garantir uma experiência única
+                                    aos nossos clientes proporcionando o encantamento
                                     através
                                     de uma jornada com conforto e segurança assistencial.</p>
                             </div>
                         </li>
-                        <li>
-                            <i class="fa-solid fa-check"></i>
+                        <li class="flex gap-6 items-start">
+                            <i class="fa-solid fa-check text-accent-blue text-xl mt-1"></i>
                             <div>
-                                <strong>Visão "Onde queremos chegar?"</strong>
-                                <p>Ser o primeiro hospital de Minas Gerais a oferecer uma jornada completa ao paciente
+                                <strong class="block text-lg mb-2 text-[#222]">Visão "Onde queremos chegar?"</strong>
+                                <p class="text-[#666] text-[0.875rem] leading-relaxed">Ser o primeiro hospital de Minas
+                                    Gerais a oferecer uma jornada completa ao paciente
                                     cirúrgico eletivo.</p>
                             </div>
                         </li>
-                        <li>
-                            <i class="fa-solid fa-check"></i>
+                        <li class="flex gap-6 items-start">
+                            <i class="fa-solid fa-check text-accent-blue text-xl mt-1"></i>
                             <div>
-                                <strong>Valores "Como agimos?"</strong>
-                                <p>Competência Técnica, Disrupção, Ética, Excelência, Inovação Científica, Integridade,
+                                <strong class="block text-lg mb-2 text-[#222]">Valores "Como agimos?"</strong>
+                                <p class="text-[#666] text-[0.875rem] leading-relaxed">Competência Técnica, Disrupção,
+                                    Ética, Excelência, Inovação Científica, Integridade,
                                     Responsabilidade Social.</p>
                             </div>
                         </li>
@@ -213,113 +322,146 @@
 
 
     <!-- Specialties Section -->
-    <section id="especialidades" class="specialties-section">
+    <!-- Specialties Section -->
+    <section id="especialidades" class="py-24 bg-[#111]">
         <div class="container">
-            <div class="section-header-center">
-                <span class="section-subtitle">ESPECIALIDADES</span>
-                <h2 class="section-title text-white" data-i18n="specialties_title">Especialidades</h2>
+            <div class="text-center mb-16">
+                <span
+                    class="block text-accent-blue font-semibold text-sm tracking-widest mb-4 uppercase">ESPECIALIDADES</span>
+                <h2 class="font-primary text-4xl md:text-[2.5rem] font-bold leading-tight mb-8 text-white"
+                    data-i18n="specialties_title">Especialidades</h2>
             </div>
 
-            <div class="specialties-grid">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                 <!-- Card 1 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
                         <img src="https://placehold.co/600x400/111/fff?text=Cirurgia+Plastica"
-                            alt="Cirurgia Plástica Estética">
+                            alt="Cirurgia Plástica Estética"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Cirurgia Plástica Estética</h3>
-                        <p>Procedimentos estéticos para realçar a beleza e restaurar a autoestima.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Cirurgia Plástica Estética</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Procedimentos estéticos para realçar a
+                            beleza e restaurar a autoestima.</p>
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Ortopedia" alt="Ortopédica">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Ortopedia" alt="Ortopédica"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Ortopédica</h3>
-                        <p>Diagnóstico e tratamento de lesões e doenças do sistema musculoesquelético.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Ortopédica</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Diagnóstico e tratamento de lesões e
+                            doenças do sistema musculoesquelético.</p>
                     </div>
                 </div>
                 <!-- Card 3 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Otorrino" alt="Otorrino">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Otorrino" alt="Otorrino"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Otorrino</h3>
-                        <p>Cuidados especializados para ouvido, nariz e garganta.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Otorrino</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Cuidados especializados para ouvido,
+                            nariz e garganta.</p>
                     </div>
                 </div>
                 <!-- Card 4 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Bucomaxilo" alt="Bucomaxilo">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Bucomaxilo" alt="Bucomaxilo"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Bucomaxilo</h3>
-                        <p>Tratamento cirúrgico de doenças e deformidades da boca e face.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Bucomaxilo</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Tratamento cirúrgico de doenças e
+                            deformidades da boca e face.</p>
                     </div>
                 </div>
                 <!-- Card 5 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Cirurgia+Geral" alt="Geral">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Cirurgia+Geral" alt="Geral"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Cirurgia Geral</h3>
-                        <p>Intervenções cirúrgicas para diversas patologias abdominais e gerais.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Cirurgia Geral</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Intervenções cirúrgicas para diversas
+                            patologias abdominais e gerais.</p>
                     </div>
                 </div>
                 <!-- Card 6 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Vascular" alt="Vascular">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Vascular" alt="Vascular"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Vascular</h3>
-                        <p>Tratamento de doenças das artérias, veias e vasos linfáticos.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Vascular</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Tratamento de doenças das artérias, veias
+                            e vasos linfáticos.</p>
                     </div>
                 </div>
                 <!-- Card 7 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Pediatria" alt="Pediátria">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Pediatria" alt="Pediátria"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Pediátria</h3>
-                        <p>Cuidados cirúrgicos especializados para o desenvolvimento infantil.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Pediátria</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Cuidados cirúrgicos especializados para o
+                            desenvolvimento infantil.</p>
                     </div>
                 </div>
                 <!-- Card 8 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Ginecologia" alt="Ginecologia">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Ginecologia" alt="Ginecologia"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Ginecologia</h3>
-                        <p>Saúde da mulher e tratamento de condições do sistema reprodutor.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Ginecologia</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Saúde da mulher e tratamento de condições
+                            do sistema reprodutor.</p>
                     </div>
                 </div>
                 <!-- Card 9 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Mastologia" alt="Mastologia">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Mastologia" alt="Mastologia"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Mastologia</h3>
-                        <p>Prevenção, diagnóstico e tratamento das doenças da mama.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Mastologia</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Prevenção, diagnóstico e tratamento das
+                            doenças da mama.</p>
                     </div>
                 </div>
                 <!-- Card 10 -->
-                <div class="specialty-card">
-                    <div class="specialty-image">
-                        <img src="https://placehold.co/600x400/111/fff?text=Neurocirurgia" alt="Neurocirurgia">
+                <div
+                    class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:-translate-y-2 group">
+                    <div class="h-[200px] overflow-hidden">
+                        <img src="https://placehold.co/600x400/111/fff?text=Neurocirurgia" alt="Neurocirurgia"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
-                    <div class="specialty-content">
-                        <h3>Neurocirurgia</h3>
-                        <p>Tratamento cirúrgico de doenças do sistema nervoso central e periférico.</p>
+                    <div class="p-6">
+                        <h3 class="font-primary text-lg font-bold mb-2 text-[#111]">Neurocirurgia</h3>
+                        <p class="text-[0.875rem] text-[#666] leading-relaxed">Tratamento cirúrgico de doenças do
+                            sistema nervoso central e periférico.</p>
                     </div>
                 </div>
             </div>
@@ -327,67 +469,89 @@
     </section>
 
     <!-- Infrastructure Section -->
-    <section class="infrastructure-section">
-        <div class="container infra-container">
-            <div class="infra-text">
-                <span class="section-subtitle">HOSPITAL DA PLÁSTICA</span>
-                <h2 class="section-title">Infraestrutura Completa</h2>
-                <p class="infra-desc">Cada detalhe de nossas instalações foi pensado para garantir a sua segurança e
+    <!-- Infrastructure Section -->
+    <section class="py-24 bg-gray-50 text-[#333]">
+        <div class="container flex flex-col lg:flex-row gap-16 items-start">
+            <div class="flex-1">
+                <span class="block text-accent-blue font-semibold text-sm tracking-widest mb-4 uppercase">HOSPITAL DA
+                    PLÁSTICA</span>
+                <h2 class="font-primary text-4xl font-bold mb-6 text-[#111]">Infraestrutura Completa</h2>
+                <p class="mb-8 text-[1rem] text-[#555] leading-relaxed">Cada detalhe de nossas instalações foi pensado
+                    para garantir a sua segurança e
                     conforto.</p>
 
-                <div class="infra-list-grid">
-                    <ul class="infra-list">
-                        <li><i class="fa-solid fa-check"></i> 65 Leitos de acomodação disponíveis entre Suite Luxo e
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-8">
+                    <ul class="">
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> 65 Leitos de acomodação disponíveis
+                            entre Suite Luxo e
                             Standard</li>
-                        <li><i class="fa-solid fa-check"></i> 22 Salas Cirúrgicas</li>
-                        <li><i class="fa-solid fa-check"></i> Sala de Recuperação</li>
-                        <li><i class="fa-solid fa-check"></i> Unidade de Estabilização Semi Intensiva</li>
-                        <li><i class="fa-solid fa-check"></i> CME by Baumer</li>
-                        <li><i class="fa-solid fa-check"></i> Centro de Oxigenioterapia Hiperbárica by OXY</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> 22 Salas Cirúrgicas</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Sala de Recuperação</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Unidade de Estabilização Semi Intensiva
+                        </li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> CME by Baumer</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Centro de Oxigenioterapia Hiperbárica by
+                            OXY</li>
                     </ul>
-                    <ul class="infra-list">
-                        <li><i class="fa-solid fa-check"></i> Centro de Especialidades</li>
-                        <li><i class="fa-solid fa-check"></i> Serviço de Diagnóstico by Siemens</li>
-                        <li><i class="fa-solid fa-check"></i> Unidade de Transição</li>
-                        <li><i class="fa-solid fa-check"></i> Praça de Alimentação by Pomodori, Mr. Black Café e
+                    <ul class="">
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Centro de Especialidades</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Serviço de Diagnóstico by Siemens</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Unidade de Transição</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Praça de Alimentação by Pomodori, Mr.
+                            Black Café e
                             Oakberry</li>
-                        <li><i class="fa-solid fa-check"></i> Áreas de Apoio</li>
-                        <li><i class="fa-solid fa-check"></i> Recepção Ampla e Moderna</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Áreas de Apoio</li>
+                        <li class="flex items-center gap-3 mb-3 text-[0.95rem] text-[#444]"><i
+                                class="fa-solid fa-check text-accent-blue"></i> Recepção Ampla e Moderna</li>
                     </ul>
                 </div>
 
-                <a href="#" class="btn-primary btn-gallery">
+                <a href="#"
+                    class="inline-flex items-center gap-2 bg-button-bg text-white py-3 px-8 rounded-full font-semibold border border-[#333] hover:bg-[#333] transition-colors">
                     <i class="fa-regular fa-images"></i> <span data-i18n="btn_gallery">Acesse nossa Galeria
                         Completa</span>
                 </a>
             </div>
 
-            <div class="infra-gallery">
-                <img src="https://placehold.co/600x600/e0e0e0/333?text=Suite+Luxo" alt="Instalações Hospitalares">
-                <div class="gallery-nav">
-                    <button class="nav-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-btn next"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
+            <div class="flex-1 w-full">
+                <img src="https://placehold.co/600x600/e0e0e0/333?text=Suite+Luxo" alt="Instalações Hospitalares"
+                    class="w-full h-auto rounded-[20px] shadow-2xl">
             </div>
         </div>
     </section>
 
     <!-- Doctors Form Section -->
-    <section id="medicos" class="doctors-section">
+    <section id="medicos" class="py-24 bg-gradient-to-b from-[#111] to-[#0a0a0a] text-white">
         <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title text-white" data-i18n="doctors_title">Médicos</h2>
-                <h3 class="form-subtitle" data-i18n="doctors_subtitle">Agende uma visita ao Hospital da Plástica</h3>
-                <p class="form-desc" data-i18n="doctors_desc">O Hospital da Plástica está de portas abertas para médicos
+            <div class="section-header-center text-center mb-16">
+                <h2 class="font-primary text-4xl md:text-[2.5rem] font-bold leading-tight mb-4 text-white"
+                    data-i18n="doctors_title">Médicos</h2>
+                <h3 class="text-xl text-accent-gold mb-4 font-primary" data-i18n="doctors_subtitle">Agende uma visita ao
+                    Hospital da Plástica</h3>
+                <p class="max-w-2xl mx-auto text-text-gray" data-i18n="doctors_desc">O Hospital da Plástica está de
+                    portas abertas para médicos
                     que desejam conhecer
                     nossos centros cirúrgicos, unidades de internação, consultórios e demais áreas de apoio.</p>
             </div>
 
-            <div class="form-container">
+            <div class="max-w-2xl mx-auto bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
                 <form class="appointment-form">
-                    <div class="form-group">
-                        <label>NOME *</label>
-                        <input type="text" placeholder="Ex: Dr. João Silva">
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold tracking-wider text-accent-gold mb-2 uppercase">NOME
+                            *</label>
+                        <input type="text" placeholder="Ex: Dr. João Silva"
+                            class="w-full bg-white/10 border border-white/20 rounded-lg py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-accent-blue focus:bg-white/20 transition-all">
                     </div>
 
                     <div class="form-row">
@@ -419,92 +583,211 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="google-rating">
-                <span class="rating-number">4.5</span>
-                <div class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i>
+    <section class="py-24 bg-white text-[#333] relative overflow-hidden">
+        <div class="container relative z-10">
+            <!-- Google Rating Summary -->
+            <div class="flex flex-col items-center mb-16">
+                <div
+                    class="inline-flex flex-col items-center bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-sm transition-transform hover:scale-105 duration-300">
+                    <span class="text-5xl font-bold text-[#111] mb-3 font-primary">4.5</span>
+                    <div class="flex gap-1 text-[#FFD700] text-xl mb-3">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <span class="text-xs text-gray-500 font-bold uppercase tracking-widest">132 avaliações no
+                        Google</span>
                 </div>
-                <span class="rating-text">132 avaliações no Google</span>
             </div>
 
-            <h2 class="testimonials-title">Depoimentos</h2>
-
-            <div class="testimonial-card">
-                <div class="stars-card">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
+            <!-- Reviews Carousel -->
+            <div class="relative max-w-4xl mx-auto px-4">
+                <div class="overflow-hidden">
+                    <div id="carousel-track" class="flex transition-transform duration-500 ease-out">
+                        <!-- Slide 1 -->
+                        <div class="w-full flex-shrink-0 px-4 text-center">
+                            <i class="fa-solid fa-quote-left text-4xl text-gray-200 mb-6"></i>
+                            <p class="text-2xl md:text-3xl font-primary text-[#333] font-medium leading-relaxed mb-8">
+                                "Hospital excellent! Atendimento humanizado e estrutura impecável. Me senti muito segura
+                                durante todo o processo."</p>
+                            <cite class="text-accent-blue font-bold text-lg not-italic block">- Maria Silva</cite>
+                            <span class="text-sm text-gray-400 mt-1 block">Paciente Cirurgia Plástica</span>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="w-full flex-shrink-0 px-4 text-center">
+                            <i class="fa-solid fa-quote-left text-4xl text-gray-200 mb-6"></i>
+                            <p class="text-2xl md:text-3xl font-primary text-[#333] font-medium leading-relaxed mb-8">
+                                "Profissionais extremamente qualificados. A estrutura do hospital é de primeiro mundo.
+                                Recomendo a todos!"</p>
+                            <cite class="text-accent-blue font-bold text-lg not-italic block">- João Souza</cite>
+                            <span class="text-sm text-gray-400 mt-1 block">Paciente Ortopedia</span>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="w-full flex-shrink-0 px-4 text-center">
+                            <i class="fa-solid fa-quote-left text-4xl text-gray-200 mb-6"></i>
+                            <p class="text-2xl md:text-3xl font-primary text-[#333] font-medium leading-relaxed mb-8">
+                                "Desde a recepção até o pós-operatório, tudo foi perfeito. O conforto das suítes
+                                realmente lembra um hotel."</p>
+                            <cite class="text-accent-blue font-bold text-lg not-italic block">- Ana Pereira</cite>
+                            <span class="text-sm text-gray-400 mt-1 block">Paciente Dermatologia</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-                <p class="testimonial-text">Foi gratificante as horas de permanência no hospital, fomos recebidos com
-                    carinho, cuidado e atenção. Parabéns a toda equipe.</p>
+
+                <!-- Controls -->
+                <button onclick="prevSlide()"
+                    class="absolute top-1/2 -left-2 md:-left-16 transform -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-400 hover:text-accent-blue hover:border-accent-blue transition-all z-10 shadow-sm"
+                    aria-label="Previous Review">
+                    <i class="fa-solid fa-chevron-left text-lg"></i>
+                </button>
+                <button onclick="nextSlide()"
+                    class="absolute top-1/2 -right-2 md:-right-16 transform -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white border border-gray-200 text-gray-400 hover:text-accent-blue hover:border-accent-blue transition-all z-10 shadow-sm"
+                    aria-label="Next Review">
+                    <i class="fa-solid fa-chevron-right text-lg"></i>
+                </button>
+
+                <!-- Dots -->
+                <div class="flex justify-center gap-2 mt-12">
+                    <button onclick="goToSlide(0)"
+                        class="w-3 h-3 rounded-full bg-accent-blue transition-all dot-indicator hover:scale-125"
+                        aria-label="Review 1"></button>
+                    <button onclick="goToSlide(1)"
+                        class="w-3 h-3 rounded-full bg-gray-300 hover:bg-accent-blue transition-all dot-indicator hover:scale-125"
+                        aria-label="Review 2"></button>
+                    <button onclick="goToSlide(2)"
+                        class="w-3 h-3 rounded-full bg-gray-300 hover:bg-accent-blue transition-all dot-indicator hover:scale-125"
+                        aria-label="Review 3"></button>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Carousel Script -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const track = document.getElementById('carousel-track');
+        const dots = document.querySelectorAll('.dot-indicator');
+        let autoSlideInterval;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-gray-300');
+                    dot.classList.add('bg-accent-blue');
+                    dot.classList.add('scale-125');
+                } else {
+                    dot.classList.add('bg-gray-300');
+                    dot.classList.remove('bg-accent-blue');
+                    dot.classList.remove('scale-125');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetAutoSlide();
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Initialize
+        resetAutoSlide();
+    </script>
+
     <!-- Location Section -->
-    <section class="location-section">
+    <section id="contato" class="py-24 bg-[#0a0a0a] text-white">
         <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title text-white" data-i18n="location_title">Nossa Localização</h2>
-                <p class="location-subtitle" data-i18n="location_subtitle">Venha nos visitar e conheça nossa estrutura
-                </p>
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="font-primary text-4xl md:text-[2.5rem] font-bold leading-tight mb-4 text-white">Nossa
+                    Localização</h2>
+                <p class="text-gray-400 text-lg">Venha nos visitar e conheça nossa estrutura</p>
             </div>
 
-            <div class="location-content">
-                <div class="map-container">
-                    <!-- Google Maps Iframe Placeholder -->
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.882322960654!2d-43.86175992497647!3d-16.72252198405526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab549746e00171%3A0x629538356f947236!2sAv.%20Afonso%20Pena%2C%20543%20-%20Centro%2C%20Montes%20Claros%20-%20MG%2C%2039400-098!5e0!3m2!1spt-BR!2sbr!4v1707560000000!5m2!1spt-BR!2sbr"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- Two Column Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <!-- Map Column -->
+                <div class="w-full">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl h-[400px] lg:h-[500px]">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d477.62549524104327!2d-43.86977156269683!3d-16.726654135481226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab5357aeae7a61%3A0x469d67eaab6b1798!2sAv.%20Afonso%20Pena%2C%20543%20-%20Centro%2C%20Montes%20Claros%20-%20MG%2C%2039400-098!5e0!3m2!1spt-BR!2sbr!4v1770741051570!5m2!1spt-BR!2sbr"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" class="w-full h-full border-0"
+                            allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
 
-                <div class="location-details">
-                    <h3 class="location-details-title">Hospital da Plástica</h3>
+                <!-- Contact Info Column -->
+                <div class="w-full">
+                    <h3 class="font-primary text-3xl font-bold mb-8 text-white" data-i18n="location_hospital_name">
+                        Hospital da Plástica</h3>
 
-                    <div class="contact-item">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-location-dot"></i>
+                    <!-- Contact Items -->
+                    <div class="space-y-6 mb-8">
+                        <!-- Address -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 flex-shrink-0 bg-accent-blue rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1" data-i18n="location_address_label">Endereço
+                                </h4>
+                                <p class="text-gray-400 leading-relaxed">Av. Afonso Pena, 543<br>Centro<br>Montes
+                                    Claros - MG<br>CEP: 39400-098</p>
+                            </div>
                         </div>
-                        <div class="contact-info">
-                            <h4>Endereço</h4>
-                            <p>Avenida Afonso Pena, 543</p>
-                            <p>Centro, Montes Claros - MG</p>
-                            <p>CEP: 39400-098</p>
+
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 flex-shrink-0 bg-accent-blue rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-phone text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1" data-i18n="location_phone_label">Telefone</h4>
+                                <p class="text-gray-400">(38) 3229-7550</p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 flex-shrink-0 bg-accent-blue rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1" data-i18n="location_email_label">E-mail</h4>
+                                <p class="text-gray-400">contato@hospitaldaplastica.com.br</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="contact-item">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Telefone</h4>
-                            <p>(31) 2517-0900</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="icon-box">
-                            <i class="fa-regular fa-envelope"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>E-mail</h4>
-                            <p>relacionamentocliente@hospitalsaorafael.com</p>
-                        </div>
-                    </div>
-
-                    <a href="https://maps.google.com" target="_blank" class="btn-primary btn-location">
-                        <i class="fa-solid fa-location-arrow"></i> <span data-i18n="btn_how_to_get">Como Chegar</span>
+                    <!-- Como Chegar Button -->
+                    <a href="https://maps.app.goo.gl/otoomiSrhpYdpLPZA" target="_blank"
+                        class="w-full bg-accent-blue text-white py-4 px-6 rounded-lg font-semibold flex items-center justify-center gap-3 hover:bg-[#00a3c4] transition-colors shadow-lg">
+                        <i class="fa-solid fa-location-arrow text-lg"></i>
+                        <span>Como Chegar</span>
                     </a>
                 </div>
             </div>
@@ -547,11 +830,11 @@
                 <h4>Contato</h4>
                 <div class="footer-info">
                     <i class="fa-solid fa-phone"></i>
-                    <p>(31) 2517-0900</p>
+                    <p>(38) 3229-7550</p>
                 </div>
                 <div class="footer-info">
                     <i class="fa-regular fa-envelope"></i>
-                    <p>relacionamentocliente@hospitalsaorafael.com</p>
+                    <p>[EMAIL_ADDRESS]</p>
                 </div>
             </div>
 
