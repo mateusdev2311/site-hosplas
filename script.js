@@ -24,7 +24,8 @@ const translations = {
         // About
         about_subtitle: "HOSPITAL DA PLÁSTICA",
         about_title: "Hospital da Plástica Especialidades Médicas",
-        about_desc: "Fundado em 2015, o Hospital da Plástica é referência em cirurgia plástica e especialidades médicas, oferecendo atendimento humanizado e estrutura de excelência.",
+        about_text_1: "Fundado no dia 14 de Abril de 2016, o Hospital da Plástica Especialidades Médicas é uma instituição privada com atividades de atendimento hospitalar, exceto pronto socorro e unidades para atendimento a urgências. Presta serviços de cirurgia plástica com atenção especial para a cirurgia estética.",
+        about_text_2: "Possui uma estrutura moderna, tecnológica e uma equipe de profissionais experientes que realizam cirurgias de pequeno, médio e grande porte nas diversas especialidades médicas. Nosso diferencial é a qualidade e o sucesso dos serviços prestados. O atendimento é personalizado com a segurança e conforto que todos merecem!",
         stat_foundation: "Fundação",
         stat_beds: "Leitos",
         stat_rooms: "Salas Cirúrgicas",
@@ -102,7 +103,8 @@ const translations = {
         // About
         about_subtitle: "PLASTIC SURGERY HOSPITAL",
         about_title: "Plastic Surgery Hospital Medical Specialties",
-        about_desc: "Founded in 2015, the Plastic Surgery Hospital is a reference in plastic surgery and medical specialties, offering humanized care and excellent structure.",
+        about_text_1: "Founded on April 14, 2016, the Plastic Surgery Hospital Medical Specialties is a private institution with hospital care activities, except emergency room and urgent care units. It provides plastic surgery services with special attention to aesthetic surgery.",
+        about_text_2: "It has a modern, technological structure and a team of experienced professionals who perform small, medium, and large surgeries in various medical specialties. Our differential is the quality and success of the services provided. Service is personalized with the safety and comfort everyone deserves!",
         stat_foundation: "Foundation",
         stat_beds: "Beds",
         stat_rooms: "Surgical Rooms",
@@ -180,7 +182,8 @@ const translations = {
         // About
         about_subtitle: "HOSPITAL DE PLÁSTICA",
         about_title: "Hospital de Plástica Especialidades Médicas",
-        about_desc: "Fundado en 2015, el Hospital de Plástica es referencia en cirugía plástica y especialidades médicas, ofreciendo atención humanizada y estructura de excelencia.",
+        about_text_1: "Fundado el 14 de abril de 2016, el Hospital de Plástica Especialidades Médicas es una institución privada con actividades de atención hospitalaria, excepto urgencias y unidades de atención de urgencias. Presta servicios de cirugía plástica con atención especial a la cirugía estética.",
+        about_text_2: "Posee una estructura moderna, tecnológica y un equipo de profesionales experimentados que realizan cirugías de pequeño, mediano y gran porte en diversas especialidades médicas. Nuestro diferencial es la calidad y el éxito de los servicios prestados. ¡La atención es personalizada con la seguridad y el confort que todos merecen!",
         stat_foundation: "Fundación",
         stat_beds: "Camas",
         stat_rooms: "Salas Quirúrgicas",
